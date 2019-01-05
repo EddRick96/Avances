@@ -7,7 +7,7 @@ from pygame.locals import *
  
 # Constantes
 WIDTH = 1200
-HEIGHT = 800
+HEIGHT = 500
 MposX = 62
 
 cont=6
@@ -53,19 +53,19 @@ def teclado():
 def sprite():
     global cont
     
-    sonic_camina[0]=(0,0,32,40)
-    sonic_camina[1]=(196,2,236,40)
-    sonic_camina[2]=(240,2,280,40)
-    sonic_camina[3]=(283,1,308,40)
-    sonic_camina[4]=(312,2,351,40)
-    sonic_camina[5]=(0,0,32,40)
+    sonic_camina[0]=(1,1,29,41)
+    sonic_camina[1]=(29,1,54,41)
+    sonic_camina[2]=(56,2,80,41)
+    sonic_camina[3]=(80,2,116,41)
+    sonic_camina[4]=(116,0,153,41)
+    sonic_camina[5]=(153,0,32,41)
     
-    Rsonic_camina[0]=(0,0,32,40)
-    Rsonic_camina[1]=(196,2,236,40)
-    Rsonic_camina[2]=(240,2,280,40)
-    Rsonic_camina[3]=(283,1,308,40)
-    Rsonic_camina[4]=(312,2,351,40)
-    Rsonic_camina[5]=(0,0,32,40)
+    Rsonic_camina[0]=(1,1,29,41)
+    Rsonic_camina[1]=(29,1,54,41)
+    Rsonic_camina[2]=(56,2,80,41)
+    Rsonic_camina[3]=(80,2,116,41)
+    Rsonic_camina[4]=(116,0,153,41)
+    Rsonic_camina[5]=(153,0,32,41)
 
     p=6
    
@@ -99,10 +99,10 @@ def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Sonic Game")
     
-    fondo=imagen("Imagenes/ppz-2-present.png").convert()
+    fondo=imagen("Imagenes/stage1.png").convert()
     
     
-    sonic=imagen("Imagenes/sprite-sonic.png", True)
+    sonic=imagen("Imagenes/Sonic1.png", True)
     sonic_inv=pygame.transform.flip(sonic, True, False)
     
     reloj=pygame.time.Clock()
@@ -120,12 +120,12 @@ def main():
         
         
         
-        screen.blit(fondo,(-288,0))
+        screen.blit(fondo,(0,0))
         if direc==True:
-            screen.blit(sonic, ( MposX, 368),(sonic_camina[i]))
+            screen.blit(sonic, ( MposX, 364),(sonic_camina[i]))
    
         if direc==False:
-            screen.blit(sonic_inv, ( MposX, 368),(Rsonic_camina[i]))
+            screen.blit(sonic_inv, ( MposX, 364),(Rsonic_camina[i]))
            
     
         pygame.display.flip()
