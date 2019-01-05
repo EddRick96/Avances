@@ -53,19 +53,19 @@ def teclado():
 def sprite():
     global cont
     
-    sonic_camina[0]=(1,1,29,41)
-    sonic_camina[1]=(29,1,54,41)
-    sonic_camina[2]=(56,2,80,41)
-    sonic_camina[3]=(80,2,116,41)
+    sonic_camina[0]=(1,0,29,41)
+    sonic_camina[1]=(29,0,54,41)
+    sonic_camina[2]=(56,0,80,41)
+    sonic_camina[3]=(80,0,116,41)
     sonic_camina[4]=(116,0,153,41)
     sonic_camina[5]=(153,0,32,41)
     
-    Rsonic_camina[0]=(1,1,29,41)
-    Rsonic_camina[1]=(29,1,54,41)
-    Rsonic_camina[2]=(56,2,80,41)
-    Rsonic_camina[3]=(80,2,116,41)
-    Rsonic_camina[4]=(116,0,153,41)
-    Rsonic_camina[5]=(153,0,32,41)
+    Rsonic_camina[0]=(482,1,511,41)
+    Rsonic_camina[1]=(456,1,482,41)
+    Rsonic_camina[2]=(431,1,456,41)
+    Rsonic_camina[3]=(395,0,431,41)
+    Rsonic_camina[4]=(358,0,395,41)
+    Rsonic_camina[5]=(324,0,358,41)
 
     p=6
    
@@ -99,7 +99,7 @@ def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Sonic Game")
     
-    fondo=imagen("Imagenes/stage1.png").convert()
+    fondo=imagen("Imagenes/stage1_vacio.png").convert()
     
     
     sonic=imagen("Imagenes/Sonic1.png", True)
@@ -117,7 +117,6 @@ def main():
         
         sprite()
         teclado()
-        
         
         
         screen.blit(fondo,(0,0))
