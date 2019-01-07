@@ -4,10 +4,13 @@
 # Módulos
 import sys, pygame
 from pygame.locals import *
- 
-# Constantes & Variables
+from time import clock
+#from pygame.constants import K_UP 
+
+#Tamaño de la pantalla
 WIDTH = 1200
 HEIGHT = 500
+# Constantes & Variables
 SposX = 62
 SposY = 364
 
@@ -129,7 +132,7 @@ def main():
     #Bucle principal del juego 
     while True:
           
-        time = reloj.tick(60)     
+        time = reloj.tick(140)     
         sprite()
         teclado()
        
