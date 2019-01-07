@@ -5,16 +5,21 @@
 import sys, pygame
 from pygame.locals import *
  
-# Constantes
+# Constantes & Variables
 WIDTH = 1200
 HEIGHT = 500
-MposX = 62
+SposX = 62
+SposY = 364
 
 cont=6
 direc=True
 i=0
 sonic_camina={}
 Rsonic_camina={}
+
+parabola={}
+salto = False
+salto_Par = False
 #=================IMAGEN========================
 def imagen(filename, transparent=False):
     try:
@@ -29,23 +34,32 @@ def imagen(filename, transparent=False):
 
 #============TECLADO=============================
 def teclado():
+    
+    global SposX
+    global cont, direc, salto, salto_Par
+    
     teclado=pygame.key.get_pressed()
     
-    global MposX
-    global cont, direc
    
-       
-    if teclado[K_RIGHT]:
-        MposX+=2
+    if teclado[K_UP] and teclado[K_RIGHT] and salto_Par==False:
+        salto_Par=True
+    elif teclado[K_UP] and teclado[K_LEFT] and salto_Par==False:
+        salto_Par=True
+         
+    elif teclado[K_RIGHT]and salto==False and salto_Par==False:
+        SposX+=2
         cont+=1
         direc=True
-    elif teclado[K_LEFT]:
-        MposX-=2
+    elif teclado[K_LEFT]and salto==False and salto_Par==False:
+        SposX-=2
         cont+=1
         direc=False
-    elif teclado[K_UP]:
-        #SALTO
-        MposX-=2
+    elif teclado[K_UP] and salto==False and salto_Par==False:
+        salto=True          
+    else :
+        cont=6
+   
+       
        
     return
 #===================================================
@@ -107,26 +121,89 @@ def main():
     
     reloj=pygame.time.Clock()
     
-    #fondo=pygame.transform.rotozoom(fondo, (1000, 400))
+
     
-                 
+    global salto_Par
+    bajada = False
+    bajada_Par = False             
     #Bucle principal del juego 
     while True:
-        
-        time = reloj.tick(60)
-        
+          
+        time = reloj.tick(60)     
         sprite()
         teclado()
-        
+       
         
         screen.blit(fondo,(0,0))
+        
+        global SposX, SposY, salto
+        
         if direc==True:
-            screen.blit(sonic, ( MposX, 364),(sonic_camina[i]))
+            screen.blit(sonic, ( SposX, SposY),(sonic_camina[i]))
    
         if direc==False:
-            screen.blit(sonic_inv, ( MposX, 364),(Rsonic_camina[i]))
+            screen.blit(sonic_inv, ( SposX, SposY),(Rsonic_camina[i]))
            
-    
+        #Salto Normal
+        if salto==True:            
+           
+            if direc==True:
+                screen.blit(sonic, ( SposX, SposY),(sonic_camina[4]))
+            if direc==False:
+                screen.blit(sonic_inv, ( SposX, SposY),(Rsonic_camina[4]))  
+           
+            if bajada==False:
+                SposY-=4              
+               
+            if bajada==True:
+                SposY+=4              
+           
+            if SposY==232:
+                bajada=True
+           
+            if SposY==364:
+                bajada=False
+                salto=False
+        #======================================  
+       
+        #SALTO PARABOLICO
+        if salto_Par==True and direc==True:            
+           
+            screen.blit(sonic, ( SposX, SposY),(sonic_camina[4]))
+           
+            if bajada_Par==False:
+                SposY-=3
+                SposX+=2
+               
+            if bajada_Par==True:
+                SposY+=3
+                SposX+=2
+           
+            if SposY==292:
+                bajada_Par=True
+           
+            if SposY==364:
+                bajada_Par=False
+                salto_Par=False
+        elif salto_Par==True and direc==False:            
+           
+            screen.blit(sonic_inv, ( SposX, SposY),(Rsonic_camina[4]))
+           
+            if bajada_Par==False:
+                SposY-=3
+                SposX-=2
+               
+            if bajada_Par==True:
+                SposY+=3
+                SposX-=2
+           
+            if SposY==292:
+                bajada_Par=True
+           
+            if SposY==364:
+                bajada_Par=False
+                salto_Par=False  
+        
         pygame.display.flip()
         
         #Cerrar la ventana
