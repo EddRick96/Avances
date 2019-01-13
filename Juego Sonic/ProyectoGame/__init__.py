@@ -6,9 +6,9 @@ import sys, pygame
 from pygame.locals import *
 from time import clock
 import os
-from ProyectoGame import Personajes
-from ProyectoGame import Escenario
-from ProyectoGame import Util
+import Personajes
+import Escenario
+import Util
 
 
 #Tamaño de la pantalla
@@ -40,7 +40,7 @@ def LoadContent():
     
     nivel= Escenario.Mapa()
     
-    nivel.cargarMapa("Nivel0")
+    nivel.cargarMapa("Nivel2")
     #fondo = imagen("Imagenes/stage1_vacio.png").convert()
     #sonic = imagen("Imagenes/SonicSprite.png", True)
     #sonic_inv = pygame.transform.flip(sonic, True, False)

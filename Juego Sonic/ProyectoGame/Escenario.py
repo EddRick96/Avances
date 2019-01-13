@@ -1,5 +1,5 @@
 import base64
-
+import StringIO
 import json
 import gzip
 import pygame
@@ -28,7 +28,7 @@ class Mapa(object):
     def cargarMapa(self,Nivel):
                 
         
-        f = open("Mapas/"+Nivel+".json", "r")
+        f = open("K:/Proyecto/Juego Sonic/Mapas/"+Nivel+".json", "r")
         data = json.load(f)
         f.close()
         

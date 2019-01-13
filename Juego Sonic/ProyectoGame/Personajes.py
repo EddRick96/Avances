@@ -12,7 +12,7 @@ class Sonic(object):
     _subida=True
 
     def __init__(self):
-        tileset=pygame.image.load("Imagenes/SonicSprite.png").convert()
+        tileset=pygame.image.load("K:/Proyecto/Juego Sonic/Imagenes/SonicSprite.png").convert()
         
         color = tileset.get_at((0,0))
         
@@ -31,7 +31,7 @@ class Sonic(object):
         self._images.append(tileset.subsurface((154,1,33,40)))                
         
         for i in range(len(self._images)):
-            self._images[i]=pygame.transform(self._images[i])
+            self._images[i]=pygame.transform.scale2x(self._images[i])
      
         return 
     
