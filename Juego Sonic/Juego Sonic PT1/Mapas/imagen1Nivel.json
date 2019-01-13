@@ -1,0 +1,14 @@
+{ "columns":226,
+ "image":"..\/..\/Desktop\/imagen1.png",
+ "imageheight":512,
+ "imagewidth":3624,
+ "margin":0,
+ "name":"imagen1",
+ "spacing":0,
+ "tilecount":7232,
+ "tiledversion":"1.2.1",
+ "tileheight":16,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":1.2
+}
